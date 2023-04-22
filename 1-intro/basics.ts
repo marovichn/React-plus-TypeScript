@@ -42,3 +42,31 @@ let ids: MyType[];
 let idsObject: MyType;
 
 //Function Types, Parameters with ts
+
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+function print1(value: any) {
+  console.log(value);
+}
+
+//Generics
+
+function insertAtBegining(array: any[], value: any) {
+  const newArray = [value, ...array];
+  return newArray;
+}
+
+const demoArray = [1, 2, 3];
+const updatedArray = insertAtBegining(demoArray, -2);
+updatedArray[0].split(""); // no error because its type is any[]
+
+function insertAtBeginingGenerically<T>(array: T[], value: T) {
+  const newArray = [value, ...array];
+  return newArray;
+}
+
+const demoArrayGenerically = [1, 2, 3];
+const updatedArrayGenerically = insertAtBeginingGenerically(demoArray, -2);
+// ERROR TS now knows the output value we told it to search for it
