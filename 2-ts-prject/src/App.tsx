@@ -10,10 +10,16 @@ function App() {
     setTodos((p) => [new Todo(data), ...p]);
   };
 
+  const deleteHandler = (todoId: string) => {
+    setTodos((p) => {
+      return p.filter((todo) => todo.id !== todoId);
+    });
+  };
+
   return (
     <div className="App">
       <NewTodo onAddHandler={submitHandler}></NewTodo>
-      <Todos items={todos}>
+      <Todos onDelete={deleteHandler} items={todos}>
         <p>Hi</p>
       </Todos>
     </div>
